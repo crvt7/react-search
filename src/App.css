@@ -1,38 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+#root, body, html{
+  background-color: #0B5437;
+}
 .App {
   text-align: center;
+  height: 100%;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-evenly;
   color: white;
+  font-size: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 40%;
+  margin-bottom: 1.5em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.infoText{
+  font-size: 1.6em;
+  margin-bottom: 1.5em;
+}
+
+.pathInfo{
+  min-height: 1.9em;
+  font-size: 1.3em;
+  margin-bottom: 0.6em;
+}
+
+button {
+  font-size: 1.4em;
+  padding: 5px;
+  margin: 2px;
+}
+button:hover {
+  background-color: #cccccc;
+  border-color: #cccccc;
+}
+
+.algButton {
+  padding: 5px;
+  margin: 10px;
+  font-size: 1.5em;
+  border: 3px solid white;
+}
+.algButton:hover {
+  background-color: #73cba9;
+}
+
+.actionBar {
+  margin-bottom: 2em;
+}
+
+.grid {
+  border: 5px solid rgba(30, 5, 143, 0.856);
+  max-width: fit-content;
+}
+
+.gridRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.gridCell {
+  min-width: 25px;
+  width: 25px;
+  height: 25px;
+  border: 2px solid black;
+  transition: background-color 0.3s ease;
+}
+.gridCell:hover {
+  border: 2px solid red;
 }
