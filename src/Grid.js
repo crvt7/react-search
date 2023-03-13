@@ -191,10 +191,6 @@ export const Grid = () => {
     />
   ));
 
-  // const readableGrid = grid.map((el, index) => (
-  //   <p key={index}>{JSON.stringify(el).replaceAll(",", " ")}</p>
-  // ));
-
   return (
     <div className="main">
       <div className="navigation">
