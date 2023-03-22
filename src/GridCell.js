@@ -36,7 +36,7 @@ export const GridCell = ({
     }
   };
 
-  const colors = ["#cccccc", "blue", "orange", "black", "green", "#822c83"];
+  const colors = ["#aaaaaa", "blue", "orange", "black", "green", "#822c83"];
 
   return (
     <div

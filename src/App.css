@@ -5,7 +5,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 #root, body, html{
-  background-color: #0B5437;
+  background-color: #323b38;
 }
 .App {
   text-align: center;
@@ -27,9 +27,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 40%;
   margin-bottom: 1.5em;
+}
+.navigation > * {
+  flex: 1
 }
 
 .infoText{
@@ -38,37 +41,48 @@
 }
 
 .pathInfo{
-  min-height: 1.9em;
   font-size: 1.3em;
-  margin-bottom: 0.6em;
+  margin-bottom: 1rem;
 }
 
 button {
   font-size: 1.4em;
-  padding: 5px;
+  padding: 0.5rem;
   margin: 2px;
+  border-radius: 1rem;
+  border: 3px solid black;
+  background-color: #c4c4c4;
+  transition: all 150ms ease-in;
+  box-shadow: 1px 1px 1px black;
 }
 button:hover {
-  background-color: #cccccc;
-  border-color: #cccccc;
+  background-color: #e2e2e2;
+}
+button:disabled {
+  background-color: #505050;
+  outline: none;
 }
 
 .algButton {
-  padding: 5px;
+  padding: 1rem;
   margin: 10px;
-  font-size: 1.5em;
-  border: 3px solid white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 4rem;
+  border: 1px solid black;
+  background-color: #004606;
+  transition: all 150ms ease-in;
+  box-shadow: 5px 5px 5px black;
 }
 .algButton:hover {
-  background-color: #73cba9;
+  background-color: #0a5f11;
 }
-
-.actionBar {
-  margin-bottom: 2em;
+.algButton.active {
+  background-color: #0d8817;
 }
 
 .grid {
-  border: 5px solid rgba(30, 5, 143, 0.856);
+  border: 5px solid #29796b;
   max-width: fit-content;
 }
 

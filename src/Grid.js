@@ -51,7 +51,7 @@ const compare = (a, b) => {
 const info = [
   "Choose the starting point",
   "Choose the ending point",
-  "Place walls and click Search",
+  "Place/remove walls and click Search",
 ];
 
 export const Grid = () => {
@@ -60,7 +60,8 @@ export const Grid = () => {
   const [points, setPoints] = useState({ startPoint: null, endPoint: null });
   const [disabled, setDisabled] = useState(false);
   const [alg, setAlg] = useState("BFS");
-  const [{pathInfo}, setPathInfo] = useState({pathInfo:null})
+  const [{ pathInfo }, setPathInfo] = useState({ pathInfo: null });
+  const [speed, setSpeed] = useState(10);
 
   const search = async (alg) => {
     let newGrid = JSON.parse(JSON.stringify(grid));
@@ -100,12 +101,15 @@ export const Grid = () => {
         });
         setGrid((previousGrid) => ({ ...previousGrid, grid: newGrid }));
         setDisabled(false);
-        setPathInfo((prevPath) => ({...prevPath, pathInfo:"Path found, length: "+path.length.toString()}))
+        setPathInfo((prevPath) => ({
+          ...prevPath,
+          pathInfo: "Path found, length: " + path.length.toString(),
+        }));
         return;
       }
       if (current[0].toString() !== start.toString()) {
         newGrid[current[0][0]][current[0][1]] = 4;
-        await new Promise((r) => setTimeout(r, 10));
+        await new Promise((r) => setTimeout(r, speed));
         document.getElementById(currentString).style.backgroundColor = "green";
       }
 
@@ -149,7 +153,7 @@ export const Grid = () => {
         }
       });
     }
-    setPathInfo((prevPath) => ({...prevPath, pathInfo:"Path not found"}))
+    setPathInfo((prevPath) => ({ ...prevPath, pathInfo: "Path not found" }));
     setGrid((previousGrid) => ({ ...previousGrid, grid: newGrid }));
     setDisabled(false);
   };
@@ -195,22 +199,19 @@ export const Grid = () => {
     <div className="main">
       <div className="navigation">
         <div
-          style={{ backgroundColor: alg === "BFS" ? "#16a96f" : "#0B5437" }}
-          className="algButton"
+          className={`algButton ${alg === "BFS" ? `active` : ``}`}
           onClick={() => setAlg("BFS")}
         >
           Breadth First Search
         </div>
         <div
-          style={{ backgroundColor: alg === "GBFS" ? "#16a96f" : "#0B5437" }}
-          className="algButton"
+          className={`algButton ${alg === "GBFS" ? `active` : ``}`}
           onClick={() => setAlg("GBFS")}
         >
           Greedy Best First Search
         </div>
         <div
-          style={{ backgroundColor: alg === "aStar" ? "#16a96f" : "#0B5437" }}
-          className="algButton"
+          className={`algButton ${alg === "aStar" ? `active` : ``}`}
           onClick={() => setAlg("aStar")}
         >
           A*
@@ -222,8 +223,8 @@ export const Grid = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            fontSize: "0.8em",
-            paddingBottom: "2em",
+            fontSize: "1rem",
+            paddingBottom: "0.5rem",
           }}
         >
           <button disabled={disabled} id="reset" onClick={() => reset()}>
@@ -233,12 +234,16 @@ export const Grid = () => {
             Place randomly generated walls
           </button>
         </div>
-
+        <div>
+        <input type="range" id="speed" name="speed" min="1" max="10" onChange={(e)=>setSpeed(50/e.target.value)}/>
+        <label for="speed">Speed</label>
+        </div>
         <button
           disabled={disabled || action !== 3}
           onClick={() => {
             search(alg);
           }}
+          style={{ fontWeight: "bold" }}
         >
           Search
         </button>
